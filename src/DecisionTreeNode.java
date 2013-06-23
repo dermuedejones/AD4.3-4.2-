@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DecisionTreeNode {
     private ArrayList<DecisionTreeNode> next;
@@ -57,14 +56,16 @@ public class DecisionTreeNode {
         return nodeName;
     }
 
-    public ArrayList<DecisionTreeNode> getNextNodes() {
+    @SuppressWarnings("unchecked")
+	public ArrayList<DecisionTreeNode> getNextNodes() {
         if (next == null) {
             return null;
         }
         return (ArrayList<DecisionTreeNode>) next.clone();
     }
 
-    public ArrayList<String> getTransitionNames() {
+    @SuppressWarnings("unchecked")
+	public ArrayList<String> getTransitionNames() {
         if (next == null) {
             return null;
         }
