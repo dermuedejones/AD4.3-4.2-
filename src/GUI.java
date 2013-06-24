@@ -4,11 +4,15 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -139,9 +143,11 @@ public class GUI extends Application {
         DecisionTreeNode Conclusions[] = new DecisionTreeNode[TestTree.getConclusions().size()];
         for (int i = 0; i < decisions.size(); i++) {
             Nodes[i] = DecisionTreeNode.createNode(TestTree.getDecisionDescription(i + 1));
-        }
+            Nodes[i].setdecisionindex(i);
+       }
         for (int i = 0; i < TestTree.getConclusions().size(); i++) {
             Conclusions[i] = DecisionTreeNode.createNode(TestTree.getConclusions().get(i));
+            Conclusions[i].setdecisionindex(i);
         }
         for (int i = 0; i < TestTree.getNext_decisions().size(); i++) {
             // System.out.println(i);
@@ -199,9 +205,7 @@ public class GUI extends Application {
         stage.show();
        // startNode;
         
-        firstNode.changeColor(Color.RED);
-        DecisionTreeNode node = firstNode.getNextNodes().get(0);
-        node.changeColor(Color.RED);
+    
         
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(final KeyEvent keyEvent) {
@@ -214,7 +218,8 @@ public class GUI extends Application {
     }
 
     private void survey() {
-        int next = 0;
+        int next = 0, indxa, indxb;
+        DecisionTreeNode node = firstNode;
         while (next >= 0) {
             String inputValue = "";
             while (inputValue.equals("")) {
@@ -223,11 +228,35 @@ public class GUI extends Application {
                 if (inputValue == null)
                     return;
             }
-
+            indxa = node.getNextNodes().get(0).getdecisionindex();
+            indxb = node.getNextNodes().get(1).getdecisionindex();
             next = TestTree.decide(next, inputValue);
+           // System.out.println(next);
+            if(next >= 0) {
+            	if(indxa == next) {
+            		node.getNextNodes().get(0).changeColor(Color.RED);
+            		node = node.getNextNodes().get(0);
+            	} else {
+            		node.getNextNodes().get(1).changeColor(Color.RED);
+            		node = node.getNextNodes().get(1);
+            	}
+            
+            }
+            
         }
-
+        indxa = node.getNextNodes().get(0).getdecisionindex();
+        indxb = node.getNextNodes().get(1).getdecisionindex();
+     
+        if(indxa == (next * -1) - 2){
+        	 node.getNextNodes().get(0).changeColor(Color.RED);
+        } else node.getNextNodes().get(1).changeColor(Color.RED);
         JOptionPane.showMessageDialog(null, this.TestTree.getConclusions().get((next * -1) - 2));
+     //   firstNode.changeColor(Color.RED);
+     //   DecisionTreeNode node = firstNode.getNextNodes().get(1);
+       // System.out.println(node.getdecisionindex());
+       // System.out.println(firstNode.getNextNodes().get(0).getdecisionindex());
+      //  node = node.getNextNodes().get(1);
+    //    node.changeColor(Color.RED);
     }
 
     /**

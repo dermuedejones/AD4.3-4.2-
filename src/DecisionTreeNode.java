@@ -10,6 +10,7 @@ public class DecisionTreeNode {
     private final String nodeName;
     public ArrayList<Path> path;
     public Rectangle rectangle;
+    private int decision_index = 0;
 
     private DecisionTreeNode(String s) {
         nodeName = s;
@@ -81,7 +82,12 @@ public class DecisionTreeNode {
         }
         return (ArrayList<String>) decisions.clone();
     }
-
+    public int getdecisionindex() {
+    	return this.decision_index;
+    }
+    public void setdecisionindex(int idx) {
+    	this.decision_index = idx;
+    }
     public void changeColor(Color c) {
         if (rectangle != null) {
             rectangle.setStroke(c);
