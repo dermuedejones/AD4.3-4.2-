@@ -106,33 +106,31 @@ public class DecisionTree implements DecisionTreeInterface{
 	public List<String> getformatedDecision(int index, String arg) {
 		return formatDecision(this.decisions.get(index), arg);
 	}
-	@Override
+
+
 	public int getParameterCount() {
 		return param_count;
 	}
 
 
-	@Override
+
 	public String getParameterDescription(int index) {
 		return paramDescriptions[index-1];
 	}
 
 
-	@Override
 	public void setParameters(List<String> params) {
 		param_values = (String[]) params.toArray();
 		
 	}
 
 
-	@Override
 	public void setParameter(String param, int index) {
 		param_values[index-1] =  param;
 		
 	}
 
 
-	@Override
 	public int getDecisionCount() {
 		return decisions.size();
 	}
@@ -140,16 +138,12 @@ public class DecisionTree implements DecisionTreeInterface{
 
 
 
-
-	@Override
 	public String getDecisionDescription(int index) {
 		if(decisionDescriptions.length == 0) return new String("");
 		return decisionDescriptions[index-1];
 	}
 	
-	
 
-	@Override
 	public void setParameterDescription(int index, String description) {
 		
 		paramDescriptions[index-1] = description;
@@ -157,21 +151,18 @@ public class DecisionTree implements DecisionTreeInterface{
 	}
 
 
-	@Override
 	public void setParameterDescriptions(List<String> descriptions) {
 		this.paramDescriptions = (String[]) descriptions.toArray(new String[descriptions.size()]);
 		
 	}
 
 
-	@Override
 	public void setDecisionDescription(int index, String description) {
 		decisionDescriptions[index-1] = description;
 		
 	}
 
 
-	@Override
 	public void setDecisionDescription(List<String> descriptions) {
 		this.decisionDescriptions = (String[]) descriptions.toArray(new String[descriptions.size()]);
 		
@@ -245,23 +236,22 @@ public class DecisionTree implements DecisionTreeInterface{
 	}
 
 
-	@Override
 	public String getParameter(int index) {
 		return param_values[index-1];
 		
 	}
 
 
-
-	@Override
 	public String[] getParameters() {
 		return param_values;
 		
 	}
-	@Override
+
+
 	public Entry<Integer, Integer> getFollowingDecisions(int index) {
 		return next_decisions.get(index);		
 	}
+
 	@Override
 	public String conclude_verbose(String[] params) {
 		this.param_values = params;

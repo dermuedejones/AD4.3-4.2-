@@ -13,7 +13,7 @@ public class Tree_erstellen_beispiele {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		/* benötigte Listen um manuell einen baum zu erstellen 
+		/* benï¿½tigte Listen um manuell einen baum zu erstellen 
 		 * */
 		List<String> decisions = new LinkedList<String>();
 		List<Entry<Integer,Integer>> next_decisions = new LinkedList<Entry<Integer,Integer>>();
@@ -24,30 +24,30 @@ public class Tree_erstellen_beispiele {
 		List<List<String>> params;
 		
 		System.out.println("\n------------------------Von Hand erstellter Decision Tree---------------------------------------\n");
-		//reihenfolge decisions wichtig unten für die übergänge, reihenfolge der parameter muss die hier vorgegebene reihenfolge haben.
+		//reihenfolge decisions wichtig unten fï¿½r die ï¿½bergï¿½nge, reihenfolge der parameter muss die hier vorgegebene reihenfolge haben.
 		DecisionTree TestTree = new DecisionTree(8, 8);
 		TestTree.setParameter("test", 1);
 		decisions.add("$1==J");
 		TestTree.setParameterDescription(1, "Boolean: variable die anzeigt ob das Bild selbst erstellt wurde (J/N)");
 		TestTree.setDecisionDescription(1, "Hast du das bild Selbst erstellt?");
 		decisions.add("$2==J");
-		TestTree.setParameterDescription(2, "Boolean: variable die anzeigt ob das Bild unter einer freien Lizenz veröffenlicht werdne soll (J/N)");
-		TestTree.setDecisionDescription(2, "Willst du es unter einer freien Lizenz veröffenlichen?");
+		TestTree.setParameterDescription(2, "Boolean: variable die anzeigt ob das Bild unter einer freien Lizenz verÃ¶ffenlicht werdne soll (J/N)");
+		TestTree.setDecisionDescription(2, "Willst du es unter einer freien Lizenz verÃ¶ffenlichen?");
 		decisions.add("$3>100");
 		TestTree.setParameterDescription(3, "Integer: Das Alter des Bildes (J/N)");
-		TestTree.setDecisionDescription(3, "Ist das Bild älter als 100 Jahre?");
+		TestTree.setDecisionDescription(3, "Ist das Bild Ã¤lter als 100 Jahre?");
 		decisions.add("$4==J");
 		TestTree.setParameterDescription(4, "Boolean: Urheber bekannt? (J/N)");
 		TestTree.setDecisionDescription(4, "Ist der Urheber des Bildes bekannt?");
 		decisions.add("$5==J");
-		TestTree.setParameterDescription(5, "Boolean: Bildrechte dritter Auszuschließen? (J/N)");
-		TestTree.setDecisionDescription(5, "Sind Bildrechte dritter Auszuschließen?");
+		TestTree.setParameterDescription(5, "Boolean: Bildrechte dritter AuszuschlieÃŸen? (J/N)");
+		TestTree.setDecisionDescription(5, "Sind Bildrechte dritter AuszuschlieÃŸen?");
 		decisions.add("$6>70");
 		TestTree.setParameterDescription(6, "Integer: vor wieviel Jahren ist der Urheber verstorben?");
 		TestTree.setDecisionDescription(6, "Ist der Urheber vor mehr als 70 Jahren verstorben?");
 		decisions.add("$7==J");
-		TestTree.setParameterDescription(7, "Boolean: Einverständnis aller betroffenen? (J/N)");
-		TestTree.setDecisionDescription(7, "Hast du das Einverständnis aller betroffenen?");
+		TestTree.setParameterDescription(7, "Boolean: EinverstÃ¤ndnis aller betroffenen? (J/N)");
+		TestTree.setDecisionDescription(7, "Hast du das EinverstÃ¤ndnis aller betroffenen?");
 		decisions.add("$8==J");
 		TestTree.setParameterDescription(8, "Boolean: Zustimmung des Urhebers? (J/N)");
 		TestTree.setDecisionDescription(8, "Hat der Urheber zugestimmt das Bild unter eine freie Lizenz zu stellen?");
@@ -55,7 +55,7 @@ public class Tree_erstellen_beispiele {
 		conclusions.add("hochladen");
 		conclusions.add("nicht hochladen");
 		TestTree.setConclusions(conclusions);
-		//übergänge: indizies der nächsten decisions bei oben angegebener reihenfolge (start bei 1) 
+		//ï¿½bergï¿½nge: indizies der nï¿½chsten decisions bei oben angegebener reihenfolge (start bei 1) 
 		//negative zahlen: der betrag ist der index einer conclusion, auch hier reihenfolge beachten 
 		next_decisions.add(new AbstractMap.SimpleEntry<Integer,Integer>(3, 2)); 
 		next_decisions.add(new AbstractMap.SimpleEntry<Integer,Integer>(-2, 5));
@@ -66,7 +66,7 @@ public class Tree_erstellen_beispiele {
 		next_decisions.add(new AbstractMap.SimpleEntry<Integer,Integer>(-2, -1));
 		next_decisions.add(new AbstractMap.SimpleEntry<Integer,Integer>(-2, -1));
 		TestTree.setNext_decisions(next_decisions);
-		//parameter müssen in der oben angegeben reihenfolge hinzugefügt werden.
+		//parameter mï¿½ssen in der oben angegeben reihenfolge hinzugefï¿½gt werden.
 		parameters.add("N");
 		parameters.add("J");
 		parameters.add("70");
@@ -79,7 +79,7 @@ public class Tree_erstellen_beispiele {
 		
 		System.out.println(TestTree.conclude_verbose(parameters.toArray(new String[parameters.size()])));
 		
-		//hier das gleiche setup wie oben, bloß die konfigurations für den baum aus der csv geparst und statt J/N eben 1/0
+		//hier das gleiche setup wie oben, bloï¿½ die konfigurations fï¿½r den baum aus der csv geparst und statt J/N eben 1/0
 		//keine descriptions
 		System.out.println("\n---------------------------Aus der csv geparste Decision trees------------------------------------\n");
 		TestTree = Parser.parseTreeCsv(".\\bild.csv");

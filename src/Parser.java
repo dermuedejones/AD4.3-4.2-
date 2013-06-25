@@ -47,7 +47,7 @@ public class Parser {
 				}
 				}
 				if(line.toLowerCase().startsWith("conclusions=")) {
-				pattern = Pattern.compile("\"[A-Za-zäöüß ]+\"");
+                pattern = Pattern.compile("\"[A-Za-zÃ¤Ã¶Ã¼ÃŸ ]+\"");
 				matcher = pattern.matcher(line);
 				while(matcher.find()) {
 					conclusions.add(matcher.group().replace("\"", ""));
@@ -55,7 +55,7 @@ public class Parser {
 				}
 				}
 				if(line.toLowerCase().startsWith("ddescription=")) {
-					pattern = Pattern.compile("\"[A-Za-z0-9äöüß ?!.:]+\"");
+                    pattern = Pattern.compile("\"[A-Za-z0-9Ã¤Ã¶Ã¼ÃŸ ?!.:]+\"");
 					matcher = pattern.matcher(line);
 					while(matcher.find()) {
 						dDescriptions.add(matcher.group().replace("\"", ""));
@@ -63,7 +63,7 @@ public class Parser {
 					}
 					}
 				if(line.toLowerCase().startsWith("pdescription=")) {
-					pattern = Pattern.compile("\"[A-Za-z0-9äöüß ?!/:.]+\"");
+                    pattern = Pattern.compile("\"[A-Za-z0-9Ã¤Ã¶Ã¼ÃŸ ?!/:.]+\"");
 					matcher = pattern.matcher(line);
 					while(matcher.find()) {
 						pDescriptions.add(matcher.group().replace("\"", ""));
